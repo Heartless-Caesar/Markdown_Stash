@@ -13,7 +13,7 @@
 
 - "print": Will print to the console without breaking to the next line,
 
-- "puts": Will print to the console and break to th next line. 
+- "puts": Will print to the console and break to the next line. 
 
 **OBS:** When printing strings with variables you have to put the statement in parenthesis.
 
@@ -303,3 +303,168 @@ end
 4
 5
 ```
+
+### Begin and Rescue statement
+
+In Ruby you utilize ```begin...rescue``` statements instead of  ```try...catch``` blocks to output error handling. 
+
+```Ruby
+  my_num = 0
+  
+begin
+   result = my_num/0
+rescue
+    puts "Division by zero attempted"
+end    
+
+# Output
+
+Division by zero attempted
+```
+However you need to input a rescue output for every error type,as shown below.
+
+```Ruby
+  my_num = 0
+  my_arr = ["Teddy","Dinosaur","Dragon"]
+begin
+   result = my_num/0
+   my_arr["Salamander"]
+rescue DivisionByZeroAttempt
+    puts "Division by zero attempted"
+rescue TypeError
+   puts "No such index/element in the given array"
+end    
+
+# Output
+
+Division by zero attempted
+
+No such index/element in the given array
+```
+
+## Classes in Ruby
+
+### Class properties and initialize method
+In Ruby classes have a syntax that differs mostly from languages like Java or Javascript. There will be code shown below exemplifying this syntax.
+
+```Ruby
+# Class
+class Book
+    #Attribute accessor functions as the skeleton attributes
+    attr_accessor :title, :author, :pages
+    
+    #Initialize method sets the attribute to the input parameters of the object
+    def initialize(title, author, pages)
+      @title = title
+      @author = author
+      @pages = pages
+    end
+end    
+
+# Book Object
+book1 = Book.new("Crime and Punishment","Fyodor Dostoevsky", 492)
+book2 = Book.new("Harry Potter", "JK Rowling", 400)
+```
+
+### Object methods
+
+These methods are defined in the class element and are utilized when working with objects much like Angular.
+
+
+```Ruby
+class Student
+
+    attr_accessor :name, :major, :gpa
+    
+    def initialize(name, major, gpa)
+      @name = name
+      @major = major
+      @gpa = gpa
+    end
+    
+    def has_honors
+       if @gpa >= 3.5
+        return true 
+       end
+        return false
+    end 
+end    
+
+student1 = Student.new("Caesar","Software Engineering", 4.0)
+
+# Calling method
+student1.has_honors
+
+# Output
+
+true
+```
+
+### Class Inheritance
+
+The inheritance property of class elements is also applied in Ruby, overrides are also present, example below.
+
+```Ruby
+class Chef
+   attr_accessors :name
+   
+   def initialize(name)
+    @name = name
+   end
+   
+   def make_chicken
+     puts ("Chef " + @name + " made chicken")
+   end
+   
+   def make_special_dish
+     puts ("Chef " + @name + " made special dish")
+   end
+end
+
+# Class that inherits attributes and methods
+# The "less than" symbol serves as the "extends" keyword
+class ItalianChef < Chef
+   def make_special_dish
+     puts ("Chef " + @name + " made lasagna")
+   end
+ 
+   def make_salad
+     puts ("Italian Chef " + @name + " made salad")
+   end
+end
+
+```
+
+### Modules in Ruby
+
+Modules are blocks of code that store methods.
+
+```Ruby
+# Defining the module and it's methods
+module Tools
+   def sayHi(name)
+    puts "Hello #{name}"
+   end
+   
+   def sayBye(name)
+    puts "Bye #{name}"
+   end
+end
+
+# Importing modules from other files
+
+# Relative as in the same relative directory
+require_relative "file_in_same_directory.rb"
+include Tools
+
+# Using the module's methods
+Tools.sayHi("Caesar") 
+
+
+```
+
+
+
+
+
+
